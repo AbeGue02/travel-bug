@@ -14,7 +14,7 @@ export default function Main() {
     
     //Check for if user is logged in or not
     const { user, setUser } = useContext(UserContext)
-
+    
     return (
         <>
             {
