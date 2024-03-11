@@ -2,8 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  flex-wrap: nowrap;
+  align-content: center;
   color: rgba(255, 255, 255, 1);
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
+
 .card button {
   color: rgba(196, 149, 255, 1);
   font-family: "Kavoon";
@@ -11,9 +20,26 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 1;
+}
+.card input {
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: rgb(0, 0, 0);
+  align-self: flex-end;
+  order: 2;
+}
+.card label {
+  color: black;
 }
 .logInScreenBackground {
-  background-image: url(../assets/TravelBug-Login-Page.gif);
+  background-image: url(../assets/piotr-osmenda-X2gePOvpgRE-unsplash.jpg);
 }
 .tripsScreenBackground {
   background-image: url(../assets/paulo-silva-pU2VRZ63EKc-unsplash.jpg);
@@ -26,8 +52,19 @@
   line-height: 18px;
 }
 .createAccountScreenBackground {
+  background-image: url(../assets/redd-f-9yWcy5B-haM-unsplash.jpg);
 }
 body {
+  background-image: url(../assets/massimiliano-morosinotto-Tw_VQuS3Xio-unsplash.jpg);
+  background-size: 932px;
+}
+p {
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: rgb(0, 0, 0);
 }
 
 #profile-pic {
