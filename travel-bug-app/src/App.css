@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 1);
+}
+.card button {
+  color: rgba(196, 149, 255, 1);
+  font-family: "Kavoon";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+}
+.logInScreenBackground {
+  background-image: url(../assets/TravelBug-Login-Page.gif);
+}
+.tripsScreenBackground {
+  background-image: url(../assets/paulo-silva-pU2VRZ63EKc-unsplash.jpg);
+}
+.tripsListContainer {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+}
+.createAccountScreenBackground {
+}
+body {
+}
