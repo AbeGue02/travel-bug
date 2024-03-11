@@ -34,6 +34,7 @@ const getTripListByName = async (req, res) => {
  }
 }
 
+
 const createTripList = async (req, res) => {
   try {
     const tripList = await new TripList(req.body)

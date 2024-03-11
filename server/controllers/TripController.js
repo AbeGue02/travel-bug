@@ -34,6 +34,17 @@ const getTripByName = async (req, res) => {
  }
 }
 
+const getTripsByTripList = async (req, res) => {
+  try {
+    const trip = await Trip.find({tripList: req.params.id })
+    if (trip) {
+      return res.json(trip)
+    }
+  } catch (error) {
+    return res.status(500).send(error.message)
+ }
+}
+
 const createTrip = async (req, res) => {
   try {
     const trip = await new Trip(req.body)
@@ -74,6 +85,7 @@ module.exports = {
   getAllTrips,
   getTripById,
   getTripByName,
+  getTripsByTripList,
   createTrip,
   updateTrip,
   deleteTrip
