@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const userSchema = require('./user');
-const tripListSchema = require('./tripList');
-const tripSchema = require('./trip');
-const activitySchema = require('./activity');
-const categorySchema = require('./category');
+const userSchema = require('./User');
+const tripListSchema = require('./TripList');
+const tripSchema = require('./Trip');
+const activitySchema = require('./Activity');
+const categorySchema = require('./Category');
 
 const User = mongoose.model('User', userSchema);
 const TripList = mongoose.model('TripList', tripListSchema);

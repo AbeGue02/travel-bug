@@ -8,12 +8,13 @@ import UserContext from '../Context'
 import LogInScreen from './LogInScreen'
 import CreateAccountScreen from './CreateAccountScreen'
 import ForgotInfoScreen from './ForgotInfoScreen'
+import TripListDetails from './TripListDetails'
 
 export default function Main() {
     
     //Check for if user is logged in or not
     const { user, setUser } = useContext(UserContext)
-
+    
     return (
         <>
             {
@@ -21,8 +22,8 @@ export default function Main() {
                 false ? (
                     <Routes>
                         <Route path='/' element={<Home/>} />
-                        <Route path='/trips' element={<TripList/>} />
-                        <Route path='/trips/:id' element={<TripDetails/>} />
+                        <Route path='/:tripListId' element={<TripListDetails/>} />
+                        <Route path='/:tripListId/trips/:id' element={<TripDetails/>} />
                     </Routes>
                 ) : (
                     <Routes>

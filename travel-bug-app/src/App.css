@@ -99,3 +99,6 @@ body{
   background-repeat: no-repeat;
 }
 
+#profile-pic {
+  width: 30px;
+}
