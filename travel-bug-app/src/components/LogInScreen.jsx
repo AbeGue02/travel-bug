@@ -25,10 +25,10 @@ export default function LogInScreen() {
     }
 
     return (
+        
         <div className="card">
-            <h2>Log In Screen</h2>
-
             <form onSubmit={formOnSubmit}>
+            <h2>Login</h2>
                 <label htmlFor="email">E-mail</label>
                 <input 
                     type="email" 
@@ -45,8 +45,9 @@ export default function LogInScreen() {
 
                 <button type="submit">Log In</button>
 
-                <p className="createAccount" onClick={() => {navigate('/user/create')}}>Create Account</p>
+                <button className="createAccount" onClick={() => {navigate('/user/create')}}>Create Account</button>
             </form>
+            
         </div>
     )
 }
