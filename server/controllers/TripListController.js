@@ -12,7 +12,7 @@ const getAllTripLists = async (req, res) => {
 const getTripListById = async (req, res) => {
   try {
     const { id } = req.params
-    const tripList = await Category.findById(id)
+    const tripList = await TripList.findById(id)
     if (tripList) {
       return res.json(tripList)
     }
