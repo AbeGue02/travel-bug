@@ -1,34 +1,13 @@
 const db = require('../db');
-const Trip = require('../models/Trip');
-const TripList = require('../models/TripList');
+const { Trip, TripList } = require('../models/');
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const main = async () => {
 
-    const tripList1 = await TripList.create({
-        name: '',
-        startDate: new Date('2024-03-15'),
-        endDate: new Date('2024-03-20')
-    });
+    let tripLists = await TripList.find()
 
-    const tripList2 = await TripList.create({
-        name: '',
-        startDate: new Date('2024-04-10'),
-        endDate: new Date('2024-04-15')
-    });
-
-    const tripList3 = await TripList.create({
-        name: '',
-        startDate: new Date('2024-05-13'),
-        endDate: new Date('2024-05-23')
-    });
-
-    const tripList4 = await TripList.create({
-        name: '',
-        startDate: new Date('2024-06-17'),
-        endDate: new Date('2024-06-24')
-    });
+    console.log(tripLists)
     
     const trips = [
         {
@@ -40,7 +19,7 @@ const main = async () => {
             toCity: 'Los Angeles',
             startDate: '2024-04-01',
             endDate: '2024-04-10',
-            tripList: null // You can specify the trip list's ObjectId here 
+            tripList: tripLists[0]._id // You can specify the trip list's ObjectId here 
         },
 
         {
@@ -52,7 +31,7 @@ const main = async () => {
             toCity: 'Paris',
             startDate: '2024-05-15',
             endDate: '2024-05-20',
-            tripList: null // You can specify the trip list's ObjectId here
+            tripList: tripLists[1]._id // You can specify the trip list's ObjectId here
         },
 
         {
@@ -64,7 +43,7 @@ const main = async () => {
             toCity: 'Madrid',
             startDate: '2024-03-21',
             endDate: '2024-03-30',
-            tripList: null // You can specify the trip list's ObjectId here 
+            tripList: tripLists[2]._id // You can specify the trip list's ObjectId here 
         },
 
         {
@@ -76,7 +55,7 @@ const main = async () => {
             toCity: 'Bogotá',
             startDate: '2024-02-16',
             endDate: '2024-02-27',
-            tripList: null // You can specify the trip list's ObjectId here 
+            tripList: tripLists[3]._id // You can specify the trip list's ObjectId here 
         }
     ];
 

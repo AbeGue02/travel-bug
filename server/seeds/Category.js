@@ -1,5 +1,5 @@
 const db = require('../db');
-const Category = require('../models/Category');
+const { Category } = require('../models/');
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
