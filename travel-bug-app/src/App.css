@@ -1,6 +1,6 @@
 .card {
   display: flex;
-  margin-top: 25vh;
+  margin-top: 16vh;
   margin-left: auto;
   margin-right: auto;
   height: 400px;
@@ -46,8 +46,6 @@ form {
   border-radius: 20%;
   max-width: fit-content;
   height: 51px;
-  
-  
 }
 .card input {
   font-family: "Georama", sans-serif;
@@ -60,7 +58,7 @@ form {
   justify-content: space-around;
   max-width: 210px;
   border-radius: 10%;
-  font-size: 32px;
+  font-size: 18px;
 }
 .card label {
   color: black;
@@ -94,11 +92,13 @@ p.forgotPassword {
   color: rgb(35, 64, 228);
 }
 body{
-  background-image: url(../assets/redd-f-9yWcy5B-haM-unsplash.jpg);
+  background-image: url(../assets/massimiliano-morosinotto-Tw_VQuS3Xio-unsplash.jpg);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+  background-color: black;
+  background-attachment: fixed;
 }
-
 #profile-pic {
   width: 30px;
 }
