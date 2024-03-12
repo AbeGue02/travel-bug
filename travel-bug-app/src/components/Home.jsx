@@ -7,11 +7,14 @@ import BASE_URL from "../globals"
 // import components
 import TripList from "./TripList"
 import CreateTripList from "./CreateTripList"
+// import { set } from "../../../server/models/User"
 
 export default function Home() {
     const [tripLists, setTripLists] = useState([])
     const { user, setUser } = useContext(UserContext)
     const [isCreatingTripList, setIsCreatingTripList ] = useState(false)
+
+    const [addTripList, setAddTripList] = useState(false)
 
     useEffect(() => {
         const getTriplist = async () => {
@@ -21,13 +24,18 @@ export default function Home() {
             setTripLists(userTripLists)
         }
         getTriplist()
-    }, [])
+    }, [addTripList])
     
+    const handleClick = () => {
+        setIsCreatingTripList(true)
+    }
+
     return (
         <div>
             <h2>Trip Lists</h2>
-            <button>Add a Trip List</button>
-            <CreateTripList />
+            <button onClick={handleClick}>Add a Trip List</button>
+            {isCreatingTripList ? <CreateTripList tripLists={tripLists} setTripLists={setTripLists} addTripList={addTripList} setAddTripList={setAddTripList} /> : null}
+            
             {
                 tripLists.length 
                 ? tripLists.map((tripList) => (

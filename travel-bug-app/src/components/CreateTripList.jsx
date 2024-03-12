@@ -8,7 +8,7 @@ import BASE_URL from "../globals";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function CreateTripList() {
+export default function CreateTripList({ tripLists, setTripLists, addTripList, setAddTripList }) {
   const { user, setUser } = useContext(UserContext)
   const initialState = {
     name: '',
@@ -25,6 +25,10 @@ export default function CreateTripList() {
     setFormState({...formState, endDate: endDate, startDate: startDate})
     await axios.post(`${BASE_URL}/triplist`, formState)
     console.log(formState)
+    setTripLists({ ...tripLists, formState })
+    setAddTripList(true)
+    console.log('what is tripList now', tripLists)
+
   }
 
   const handleChange = (event) => {
