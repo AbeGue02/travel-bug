@@ -1,13 +1,17 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import TripList from "./TripList"
 import {useContext} from 'react'
 import UserContext from "../Context"
 import BASE_URL from "../globals"
 
+// import components
+import TripList from "./TripList"
+import CreateTripList from "./CreateTripList"
+
 export default function Home() {
     const [tripLists, setTripLists] = useState([])
-    const {user, setUser} = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
+    const [isCreatingTripList, setIsCreatingTripList ] = useState(false)
 
     useEffect(() => {
         const getTriplist = async () => {
@@ -23,6 +27,7 @@ export default function Home() {
         <div>
             <h2>Trip Lists</h2>
             <button>Add a Trip List</button>
+            <CreateTripList />
             {
                 tripLists.length 
                 ? tripLists.map((tripList) => (
