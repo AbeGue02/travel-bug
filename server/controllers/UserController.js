@@ -1,5 +1,22 @@
 const { User } = require('../models')
 
+
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email: email, password: password });
+
+    if (user) {
+      return res.status(200).json(user);
+    } else {
+      return res.status(401).send('Invalid email or password');
+    }
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({})
@@ -71,6 +88,7 @@ const deleteUser = async (req, res) => {
 }
 
 module.exports = {
+  loginUser,
   getAllUsers,
   getUserById,
   getUserByName,

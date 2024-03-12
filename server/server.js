@@ -19,6 +19,7 @@ app.use(cors())
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
+
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
@@ -70,3 +71,6 @@ app.get('/category/:id', CategoryController.getCategoryById )
 app.post('/category', CategoryController.createCategory)
 app.put('/category', CategoryController.updateCategory)
 app.delete('/category', CategoryController.deleteCategory)
+
+//Login
+app.post('/api/login', UserController.loginUser) // Implement the logic in LoginController
