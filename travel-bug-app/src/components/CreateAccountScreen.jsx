@@ -24,6 +24,7 @@ export default function CreateAccountScreen() {
     
     return (
         <>
+            <div className="card">
             <h2>Create Account</h2>
 
             <form onSubmit={formOnSubmit}>
@@ -40,8 +41,9 @@ export default function CreateAccountScreen() {
                     onChange={formOnChange} 
                     id='password' />
 
-                <button type="submit">Sign Up</button>
+                <button type="submit">Lets Travel!</button>
             </form>
+            </div>
         </>
     )
 }
