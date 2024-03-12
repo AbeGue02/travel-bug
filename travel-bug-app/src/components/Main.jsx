@@ -19,7 +19,7 @@ export default function Main() {
         <>
             {
                 //user.email ? (
-                false ? (
+                user.email ? (
                     <Routes>
                         <Route path='/' element={<Home/>} />
                         <Route path='/:tripListId' element={<TripListDetails/>} />
