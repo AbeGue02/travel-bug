@@ -14,7 +14,7 @@
   font-style: normal;
   font-variation-settings: "wdth" 100;
   border: 1px solid black;
-  border-radius: 10%;
+  border-radius: 22px;
   max-width: 400px;
   background-color: white;
   align-items: center;
@@ -43,9 +43,10 @@ form {
   display: flex;
   justify-content: content;
   align-items: center;
-  border-radius: 20%;
+  border-radius: 22px;
   max-width: fit-content;
   height: 51px;
+  margin-top: 20px;
 }
 .card input {
   font-family: "Georama", sans-serif;
@@ -55,10 +56,11 @@ form {
   font-variation-settings: "wdth" 100;
   color: rgb(0, 0, 0);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   max-width: 210px;
-  border-radius: 10%;
+  border-radius: 22px;
   font-size: 18px;
+  margin-top: 10px;
 }
 .card label {
   color: black;
@@ -101,4 +103,13 @@ body{
 }
 #profile-pic {
   width: 30px;
+}
+div.header{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+color: white;
+}
+div.username{
+  align-self: center;
 }
