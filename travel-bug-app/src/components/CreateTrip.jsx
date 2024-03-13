@@ -25,6 +25,7 @@ const {tripListId} = useParams()
     const [formInfo, setFormInfo] = useState(initialForm)
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
+    const [error, setError] = useState("")
 
     const formOnChange = (event) => {
         setFormInfo({ ...formInfo, [event.target.id]: event.target.value })
@@ -32,12 +33,44 @@ const {tripListId} = useParams()
 
     const formOnSubmit = async (event) => {
         event.preventDefault()
-        setFormInfo({...formInfo, startDate: startDate, endDate: endDate})
-        await axios.post(`${BASE_URL}/trip`, formInfo)
-        setFormInfo(initialForm)
-        setIsCreatingTrip(false)
-        getTrips(tripListId)
+
+        // validation checks
+
+        if (new Date(formInfo.endDate) < new Date(formInfo.startDate)) {
+            setError("End date cannot be before start date")
+            return
+        }
+
+        if (!formInfo.fromCity || formInfo.fromCity.length <3) {
+            setError("From city must be at least three characters long")
+            return
+        }
+
+        if (!formInfo.toCity || formInfo.toCity.length <3) {
+            setError("To city must be at least three character long")
+            return
+        }
+
+        if (formInfo.fromCity === formInfo.toCity && formInfo.fromCountry === formInfo.toCountry) {
+            setError("Trip destination cannot be the same as the starting point")
+            return
+        }
+
+        // If all vaildation check pass, proceed with form submission
+
+        setError("")
+        setFormInfo({ ...formInfo, startDate, endDate})
+
+        try {
+
+            await axios.post(`${BASE_URL}/trip`, formInfo)
+            setFormInfo(initialForm)
+            setIsCreatingTrip(false)
+            getTrips(tripListId)
+    } catch (error) {
+        console.error("Error creating trip:", error)
     }
+}
     
     return (
         <div className="createTripContainer">
