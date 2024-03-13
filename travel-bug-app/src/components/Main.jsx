@@ -9,6 +9,8 @@ import LogInScreen from './LogInScreen'
 import CreateAccountScreen from './CreateAccountScreen'
 import ForgotInfoScreen from './ForgotInfoScreen'
 import TripListDetails from './TripListDetails'
+import UserProfile from './UserProfile'
+import EditUserProfile from './EditUserProfile'
 
 export default function Main() {
     
@@ -23,7 +25,9 @@ export default function Main() {
                     <Routes>
                         <Route path='/' element={<Home/>} />
                         <Route path='/:tripListId' element={<TripListDetails/>} />
-                        <Route path='/:tripListId/trips/:id' element={<TripDetails/>} />
+                        <Route path='/:tripListId/trips/:id' element={<TripDetails />} />
+                        <Route path='/user/:id' element={<UserProfile />} />
+                        <Route path='/user/:id/edit' element={<EditUserProfile />} />
                     </Routes>
                 ) : (
                     <Routes>
