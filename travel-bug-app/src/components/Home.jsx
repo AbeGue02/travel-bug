@@ -32,7 +32,10 @@ export default function Home() {
 
     return (
         <div>
+            <div className="tripList">
+                <div className="tripCard">
             <h2>Trip Lists</h2>
+                </div>
             <button onClick={handleClick}>Add a Trip List</button>
             {isCreatingTripList ? <CreateTripList tripLists={tripLists} setTripLists={setTripLists} addTripList={addTripList} setAddTripList={setAddTripList} /> : null}
             
@@ -44,6 +47,7 @@ export default function Home() {
                     <h4>No results were found.</h4>
                 )
             }
+            </div>
         </div>
     )
 }
