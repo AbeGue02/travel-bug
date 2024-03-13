@@ -121,7 +121,7 @@ div.tripList{
 div.tripCard {
   max-width: fit-content;
   border-radius: 22px;
-  opacity: 87%;
+  
   color: white;
   display: flex;
 }
