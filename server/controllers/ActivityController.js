@@ -22,6 +22,19 @@ const getActivityById = async (req, res) => {
  }
 }
 
+const getActivitiesByTrip = async (req, res) => {
+  try {
+    const { id } = req.params
+    const activities = await Activity.find({trip: id})
+    if (activities) {
+      return res.json(activities)
+    }
+    return res.status(404).send('Activity item with specified ID does not exists')
+  } catch (error) {
+    return res.status(500).send(error.message)
+ }
+}
+
 const getActivityByName = async (req, res) => {
   try {
     const name  = req.query.name
@@ -73,6 +86,7 @@ const deleteActivity = async (req, res)=>{
 module.exports = {
   getAllActivities,
   getActivityById,
+  getActivitiesByTrip,
   getActivityByName,
   createActivity,
   updateActivity,

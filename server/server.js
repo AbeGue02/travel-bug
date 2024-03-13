@@ -57,6 +57,7 @@ app.delete('/triplist', TripListController.deleteTripList)
 // Activity
 app.get('/actvity', ActivityController.getAllActivities)
 app.get('/actvity/:id', ActivityController.getActivityById)
+app.get('/trip/:id/activities', ActivityController.getActivitiesByTrip)
 // Get TripList by name
 // app.get('/actvity/', ActivityController.getActivityByName)
 app.post('/actvity', ActivityController.createActivity)
