@@ -113,3 +113,34 @@ color: white;
 div.username{
   align-self: center;
 }
+div.tripList{
+  display: flex;
+  flex-direction: column;
+  
+}
+div.tripCard {
+  max-width: fit-content;
+  border-radius: 22px;
+  opacity: 87%;
+  color: white;
+  display: flex;
+}
+div.tripList h2{
+  font-size: 30px;
+}
+div.tripList button{
+  color: white;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 18px;
+  border: none;
+  border-radius: 100px;
+  background-color:rgba(98, 98, 98, 0.91);
+}
+div.tripList h4{
+  color: white;
+  max-width: fit-content;
+  padding: 30px;
+}
