@@ -48,7 +48,7 @@ const getTripsByTripList = async (req, res) => {
 const createTrip = async (req, res) => {
   try {
     const trip = await new Trip(req.body)
-    await Trip.save()
+    await trip.save()
     return res.status(201).json({trip})
   } catch (error) {
     return res.status(500).json({error:error.message})

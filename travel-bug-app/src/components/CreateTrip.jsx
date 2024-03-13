@@ -4,10 +4,14 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import BASE_URL from "../globals";
+import { useParams } from "react-router-dom";
 
-export default function CreateTrip({setIsCreatingTrip}) {
+export default function CreateTrip({ setIsCreatingTrip, getTrips }) {
     
+const {tripListId} = useParams()
+
     const initialForm = {
+        tripList: tripListId,
         fromCity: '',
         fromState: '',
         fromCountry: '',
@@ -19,6 +23,8 @@ export default function CreateTrip({setIsCreatingTrip}) {
     }
     
     const [formInfo, setFormInfo] = useState(initialForm)
+    const [startDate, setStartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(new Date())
 
     const formOnChange = (event) => {
         setFormInfo({ ...formInfo, [event.target.id]: event.target.value })
@@ -26,10 +32,11 @@ export default function CreateTrip({setIsCreatingTrip}) {
 
     const formOnSubmit = async (event) => {
         event.preventDefault()
-
+        setFormInfo({...formInfo, startDate: startDate, endDate: endDate})
         await axios.post(`${BASE_URL}/trip`, formInfo)
         setFormInfo(initialForm)
         setIsCreatingTrip(false)
+        getTrips(tripListId)
     }
     
     return (
@@ -82,16 +89,13 @@ export default function CreateTrip({setIsCreatingTrip}) {
 
                 <label htmlFor="startDate">Start Date</label>
                 <DatePicker 
-                    selected={formInfo.startDate} 
-                    onChange={formOnChange}
-                    id="startDate"/>
+                    selected={startDate} 
+                    onChange={(date) => {setStartDate(date)}}/>
 
                 <label htmlFor="endDate">End Date</label>
                 <DatePicker 
-                    selected={formInfo.endDate} 
-                    onChange={formOnChange}
-                    showTimeSelect
-                    id="startDate"/>
+                    selected={endDate} 
+                    onChange={(date) => {setEndDate(date)}}/>
 
                 <button type="submit">Create Trip</button>
             </form>

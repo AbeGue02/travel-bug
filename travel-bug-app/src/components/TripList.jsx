@@ -8,7 +8,8 @@ export default function TripList({tripList}) {
     return (
         <div>
             <h3>{tripList.name}</h3>
-            <button>Go to Details</button>
+            <button
+                onClick={() => {navigate(`/${tripList._id}`)}}>Go to Details</button>
         </div>
     )
 }

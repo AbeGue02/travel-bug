@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from 'axios'
 import BASE_URL from "../globals"
 import CreateTrip from "./CreateTrip"
+import Trip from './Trip'
 
 export default function TripListDetails() {
     //Shows all the trips within one trip, with the option to both create more and go to the details of one
@@ -12,24 +13,24 @@ export default function TripListDetails() {
     const [trips, setTrips] = useState()
     const [isCreatingTrip, setIsCreatingTrip] = useState(false)
     
-    useEffect(() => {
-        const getTripsFromTripList = async (id) => {
-            let response = await axios.get(`${BASE_URL}/tripList/${tripListId}/trip`)
-            console.log(response.data)
-            setTrips(response.data)
-        }
-        const getTripList = async () => {
-            let response = await axios.get(`${BASE_URL}/tripList/${tripListId}`)
-            console.log(response.data)
-            setTripList(response.data)
-            getTripsFromTripList(response.data._id)
-        }
+    const getTripsFromTripList = async (id) => {
+        let response = await axios.get(`${BASE_URL}/tripList/${id}/trip`)
+        console.log(response)
+        setTrips(response.data)
+    }
+    const getTripList = async () => {
+        let response = await axios.get(`${BASE_URL}/tripList/${tripListId}`)
+        console.log(response.data)
+        setTripList(response.data)
+        await getTripsFromTripList(response.data._id)
+    }
 
+    useEffect(() => {
         getTripList()
     }, [])
 
     return (
-        <>
+        <div>
             {
                 tripList ? (
                     <>
@@ -38,15 +39,17 @@ export default function TripListDetails() {
                         <div>
                             {
                                 isCreatingTrip && (
-                                    <CreateTrip setIsCreatingTrip={setIsCreatingTrip}/>
+                                    <CreateTrip 
+                                        setIsCreatingTrip={setIsCreatingTrip}
+                                        getTrips={getTripsFromTripList}/>
                                 )
                             }
                             {
-                                trips.length ? (
+                                trips ? (
                                     <>
                                         {
                                             trips.map((trip) => (
-                                                <Trip trip={trip}/>
+                                                <Trip trip={trip} key={trip._id}/>
                                             ))
                                         }
                                     </>
@@ -60,6 +63,6 @@ export default function TripListDetails() {
                     <h4>Loading</h4>
                 )
             }
-        </>
+        </div>
     )
 }
