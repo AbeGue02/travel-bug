@@ -12,6 +12,11 @@ export default function UserProfile() {
     navigate(`/user/${id}/edit`)  
   }
 
+  const handleLogout = () => {
+    setUser('')
+    navigate(`/`)
+  }
+
   return (
     <div>
       <h3>Profile</h3>
@@ -21,7 +26,8 @@ export default function UserProfile() {
         <li>Name {user.name}</li>
         <li>Email {user.email} </li>
       </ul>
-      <button onClick={()=> handleClick(user._id)}>EDIT PROFILE SETTING</button>
+      <button onClick={() => handleClick(user._id)}>EDIT PROFILE SETTING</button>
+      <button onClick={()=> handleLogout()}>LOG OUT</button>
     </div>
   )
 }
