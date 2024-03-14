@@ -18,17 +18,17 @@ export default function Header() {
     }
 
     return (
-        <>
-            <div className="header">
-                <div className="logo" onClick={handleClick}>
-                    <h1><GiButterfly /> Travel Bug</h1>
-                </div>
-            {user.email ? (
-                <div className="profile" onClick={()=> {navigate(`/user/:id`)}}>
-                    <img id="profile-pic" src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg" />
-                </div>
-            ) : <div className="username">no user here</div>}
+        <div className="header">
+            <div className="logo" onClick={handleClick}>
+                <h1><GiButterfly /> Travel Bug</h1>
             </div>
-        </>
+            {
+                user.email ? (
+                    <div className="profile" onClick={()=> {navigate(`/user/:id`)}}>
+                        <img id="profile-pic" src="https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg" />
+                    </div>
+                ) : <div className="username">no user here</div>
+            }
+        </div>
     )
 }
