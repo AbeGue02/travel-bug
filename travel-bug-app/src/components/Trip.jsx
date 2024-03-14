@@ -7,7 +7,7 @@ export default function Trip({trip}) {
     let navigate = useNavigate()
 
     return (
-        <div>
+        <div className="trip">
             <h4>{trip.fromCity} - {trip.toCity}</h4>
             <p>Start Date: {trip.startDate}</p>
             <p>End Date: {trip.endDate}</p>

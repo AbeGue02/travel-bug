@@ -110,18 +110,26 @@ flex-direction: row;
 justify-content: space-between;
 color: white;
 }
+div.logo {
+  cursor: pointer;
+}
+div.profile {
+  cursor: pointer;
+}
 div.username{
   align-self: center;
 }
 div.tripList{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 div.tripCard {
   max-width: fit-content;
   border-radius: 22px;
-  
   color: white;
   display: flex;
 }
@@ -138,9 +146,124 @@ div.tripList button{
   border: none;
   border-radius: 100px;
   background-color:rgba(98, 98, 98, 0.91);
+  max-width: fit-content;
+  justify-content: center;
+  align-self: center;
+  padding: 5px;
 }
 div.tripList h4{
   color: white;
   max-width: fit-content;
   padding: 30px;
+  margin-left: auto;
+  margin-right:auto;
+}
+div.tripList form{
+  color: white;
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px; 
+}
+div.tripList input{
+  font-size: large;
+}
+div.listedTrips {
+  background-color: rgba(98, 98, 98, 0.91);
+  border-radius: 22px;
+  padding:30px;
+  margin: 10px;
+  opacity: 80%;
+  max-width:400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+}
+div.listedTrips button {
+  background-color: rgb(31, 30, 30);
+  margin-top: 5vh;
+}
+div.listedTrips h3{
+  color: white;
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+div.createTripContainer{
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 20px;
+  
+  
+}
+div.createTripHeader {
+  margin: auto;
+  display:flex;
+  flex-direction: row;
+}
+div.createTripHeader button{
+  border:none;
+  background: none;
+  color: white;
+  font-size: 25px;
+}
+div.tripListing{
+  color: white;
+  display: flex;
+  flex-direction: column;
+ 
+}
+div.createTripBtn{
+  max-width: fit-content;
+  margin: auto;
+  background-color :rgba(98, 98, 98, 0.91) ;
+  border: none; 
+  
+  
+}
+div.tripListing h2{
+  max-height: fit-content;
+
+}
+div.createTripContainer form{
+  margin: auto;
+}
+div.createTripContainer button{
+  
+}
+div.trip{
+  color: white;
+  font-size: 30px;
+  font-family: 'Notable';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  text-align: center;
+
+color: #FFFFFF;
+
+
+  
+}
+div.trip button{
+  border-radius: 22px;
+  border: none;
+  background-color:rgba(98, 98, 98, 0.91) ;
+  color: white;
+  font-size: large;
 }
