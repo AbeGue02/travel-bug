@@ -2,10 +2,10 @@ const { User } = require('../models')
 
 
 const loginUser = async (req, res) => {
-  const { emailorUsername, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ $or: [{ email: emailOrUsername }, { username: emailOrUsername }], password: password });
+    const user = await User.findOne({ email: email, password: password });
 
     if (user) {
       return res.status(200).json(user);
