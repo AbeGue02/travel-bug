@@ -10,17 +10,19 @@ export default function TripListDetails() {
     
     const { tripListId } = useParams()
     const [tripList, setTripList] = useState()
-    const [trips, setTrips] = useState()
+    const [trips, setTrips] = useState([])
     const [isCreatingTrip, setIsCreatingTrip] = useState(false)
     
-    const getTripsFromTripList = async (id) => {
-        let response = await axios.get(`${BASE_URL}/tripList/${id}/trip`)
-        console.log(response)
+    const getTripsFromTripList = async () => {
+        let response = await axios.get(`${BASE_URL}/triplist/${tripListId}/trip`) 
+        // /:tripListId/trips/:id
+        console.log('response from getTripsFromTripList function in TripListDetails', response.data)
         setTrips(response.data)
+        console.log(trips)
     }
     const getTripList = async () => {
         let response = await axios.get(`${BASE_URL}/tripList/${tripListId}`)
-        console.log(response.data)
+        console.log('response from getTripList in TripListDetails', response.data)
         setTripList(response.data)
         await getTripsFromTripList(response.data._id)
     }
@@ -51,7 +53,7 @@ export default function TripListDetails() {
                                 )
                             }
                             {
-                                trips ? (
+                                trips.length ? (
                                     <>
                                         {
                                             trips.map((trip) => (
