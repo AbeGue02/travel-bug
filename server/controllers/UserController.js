@@ -53,11 +53,25 @@ const getUserByName = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const user = await new User(req.body)
-    await User.save()
-    return res.status(201).json({user})
+    const { email, username } = req.body;
+    
+    const existingUser = await User.findOne({ $or: [{ email: email }, { username: username }] });
+
+    if (existingUser) {
+      return res.status(400).json({ error: 'Email or username already exists' });
+    }
+
+    const newUser = new User(req.body);
+    const savedUser = await newUser.save();
+
+    if (!savedUser) {
+      return res.status(500).json({ error: 'Failed to save user' });
+    }
+
+    return res.status(201).json( newUser );
   } catch (error) {
-    return res.status(500).json({error:error.message})
+    console.log(error.message);
+    return res.status(500).json({ error: 'Failed to create user', message: error.message });
   }
 }
 
