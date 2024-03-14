@@ -22,13 +22,42 @@ export default function CreateTripList({ tripLists, setTripLists, addTripList, s
 
   const handleSubmit = async(event) => {
     event.preventDefault()
+
+    // validation check for end date before start date
+
+    if (new Date(formState.endDate) < new Date(formState.startDate)) {
+      console.error("End date cannot be before start date")
+      return
+    }
+
+    // validation check for empty or short name 
+
+    if (!formState.name || formState.name.length <3) {
+      console.error("Name must be at least three characters long")
+      return
+    }
+
+    // validation check for exiting trip list with the same destination
+
+    const isExitingTripList = tripLists.some((tripList) => {
+      return (
+        tripList.name === formState.name &&
+        tripList.startDate === formState.startDate &&
+        tripList.endDate === formState.endDate
+      )
+    })
+
+    if (isExitingTripList) {
+      console.error("A trip list with the same name and dates already exists")
+      return
+    }
+
+    // If all validation checks pass, proceed with form submission
+
     setFormState({...formState, endDate: endDate, startDate: startDate})
     await axios.post(`${BASE_URL}/triplist`, formState)
-    console.log(formState)
     setTripLists({ ...tripLists, formState })
     setAddTripList(true)
-    console.log('what is tripList now', tripLists)
-
   }
 
   const handleChange = (event) => {

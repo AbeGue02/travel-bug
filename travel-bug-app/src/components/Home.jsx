@@ -7,7 +7,6 @@ import BASE_URL from "../globals"
 // import components
 import TripList from "./TripList"
 import CreateTripList from "./CreateTripList"
-// import { set } from "../../../server/models/User"
 
 export default function Home() {
     const [tripLists, setTripLists] = useState([])
