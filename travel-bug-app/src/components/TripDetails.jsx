@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 
 import BASE_URL from '../globals'
 import axios from 'axios'
+import { IoMdAddCircle } from "react-icons/io";
+import CreateActivity from './CreateActivity';
 
 export default function TripDetails() {
     
@@ -10,6 +12,13 @@ export default function TripDetails() {
 
     const [trip, setTrip] = useState()
     const [activities, setActivities] = useState([])
+    const [isCreatingActivity, setIsCreatingActivity] = useState(false)
+    
+    const getActivities = async () => {
+        let response = await axios.get(`${BASE_URL}/trip/${id}/activities`)
+        console.log(response.data)
+        setActivities(response.data)
+    }
 
     useEffect(() => {
         const getTrip = async () => {
@@ -17,15 +26,13 @@ export default function TripDetails() {
             console.log(response.data)
             setTrip(response.data)
         }
-        const getActivities = async () => {
-            let response = await axios.get(`${BASE_URL}/trip/${id}/activities`)
-            console.log(response.data)
-            setActivities(response.data)
-        }
         getTrip()
         getActivities()
     }, [])
     
+    useEffect(() => {
+        !isCreatingActivity && getActivities()
+    }, [isCreatingActivity])
     
     return (
         <>
@@ -38,7 +45,14 @@ export default function TripDetails() {
                             <p>{trip.startDate} - {trip.endDate}</p>
                         </div>
                         <h3>Activities</h3>
+                        <button
+                            onClick={() => {setIsCreatingActivity(true)}}><IoMdAddCircle /> Create Activity</button>
                         <div>
+                            {
+                                isCreatingActivity && (
+                                    <CreateActivity setIsCreatingActivity={setIsCreatingActivity}/>
+                                )
+                            }
                             {
                                 activities.length ? (
                                     <>
