@@ -56,11 +56,8 @@ export default function CreateTripList({ tripLists, setTripLists, addTripList, s
 
     setFormState({...formState, endDate: endDate, startDate: startDate})
     await axios.post(`${BASE_URL}/triplist`, formState)
-    console.log(formState)
     setTripLists({ ...tripLists, formState })
     setAddTripList(true)
-    console.log('what is tripList now', tripLists)
-
   }
 
   const handleChange = (event) => {

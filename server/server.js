@@ -32,7 +32,7 @@ app.get('/user/:id', UserController.getUserById)
 // Get User by name
 // app.get('/user/', UserController.getUserByName)
 app.post('/user', UserController.createUser)
-app.put('/user', UserController.updateUser)
+app.put('/user/:id/edit', UserController.updateUser)
 app.delete('/user', UserController.deleteUser)
 
 // Trip
