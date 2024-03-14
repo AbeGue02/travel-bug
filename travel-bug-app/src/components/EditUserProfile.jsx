@@ -29,8 +29,10 @@ export default function EditUserProfile() {
 
   return (
     <>
+    <div className="profileUser">
       <h3>Your profile settings</h3>
-      <div>
+      </div>
+      <div className="profileSettings">
         <form onSubmit={handleSubmit}>
           {/* <label htmlFor="name">Trip List Name</label>
           <input type='text' name='name' id='name' value={formState.name} onChange={handleChange}></input> */}
