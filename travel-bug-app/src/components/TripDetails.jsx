@@ -41,13 +41,17 @@ export default function TripDetails() {
                 trip ? (
                     <>
                         <div>
+                            <div className='activityDetails'>
                             <h2>{trip.fromCity} - {trip.toCity}</h2>
                             <p>{trip.startDate} - {trip.endDate}</p>
                         </div>
+                        <div className='PITABtn'>
                         <h3>Activities</h3>
                         <button
                             onClick={() => {setIsCreatingActivity(true)}}><IoMdAddCircle /> Create Activity</button>
+                            </div>
                         <div>
+                            </div>
                             {
                                 isCreatingActivity && (
                                     <CreateActivity setIsCreatingActivity={setIsCreatingActivity}/>
@@ -75,6 +79,7 @@ export default function TripDetails() {
                     <h2>Loading...</h2>
                 )
             }
+            
         </>
     )
 }

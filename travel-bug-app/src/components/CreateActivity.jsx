@@ -47,6 +47,7 @@ export default function CreateActivity({setIsCreatingActivity}) {
 
     return (
         <div>
+            <div className="newActivity">
             <h4>Create New Activity</h4>
             <button
                 onClick={() => {setIsCreatingActivity(false)}}><MdCancel /> Close</button>
@@ -89,6 +90,7 @@ export default function CreateActivity({setIsCreatingActivity}) {
                 <button type="submit">Create Activity</button>
                 
             </form>
+            </div>
         </div>
     )
 }
