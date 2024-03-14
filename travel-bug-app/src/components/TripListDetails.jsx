@@ -34,8 +34,14 @@ export default function TripListDetails() {
             {
                 tripList ? (
                     <>
+                        <div>
+                            <div className="tripListing">
                         <h2>{tripList.name}</h2>
+                        
+                        <div className="createTripBtn">
                         <button onClick={() => {setIsCreatingTrip(true)}}>Create Trip</button>
+                        </div>
+                        </div>
                         <div>
                             {
                                 isCreatingTrip && (
@@ -57,6 +63,7 @@ export default function TripListDetails() {
                                     <h4>No trips here...</h4>
                                 )
                             }
+                        </div>
                         </div>
                     </>
                 ) : (

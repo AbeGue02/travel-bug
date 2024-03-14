@@ -6,10 +6,10 @@ export default function TripList({tripList}) {
     const navigate = useNavigate()
 
     return (
-        <div>
+        <div className="listedTrips">
             <h3>{tripList.name}</h3>
             <button
-                onClick={() => {navigate(`/${tripList._id}`)}}>Go to Details</button>
+                onClick={() => {navigate(`/${tripList._id}`)}}>See Details</button>
         </div>
     )
 }
