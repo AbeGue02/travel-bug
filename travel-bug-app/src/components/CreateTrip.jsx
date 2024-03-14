@@ -5,10 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import BASE_URL from "../globals";
 import { useParams } from "react-router-dom";
+// import { useContext } from "react";
+// import UserContext from '../Context'
 
 export default function CreateTrip({ setIsCreatingTrip, getTrips }) {
     
-const {tripListId} = useParams()
+    const {tripListId} = useParams()
+    // const {user, setUser} = useContext(UserContext)
 
     const initialForm = {
         tripList: tripListId,
@@ -23,9 +26,7 @@ const {tripListId} = useParams()
     }
     
     const [formInfo, setFormInfo] = useState(initialForm)
-    const [startDate, setStartDate] = useState(new Date())
-    const [endDate, setEndDate] = useState(new Date())
-    const [error, setError] = useState("")
+    const [error, setError] = useState('')
 
     const formOnChange = (event) => {
         setFormInfo({ ...formInfo, [event.target.id]: event.target.value })
@@ -36,37 +37,36 @@ const {tripListId} = useParams()
 
         // validation checks
 
-        if (new Date(formInfo.endDate) < new Date(formInfo.startDate)) {
-            setError("End date cannot be before start date")
-            return
-        }
+        // if (formInfo.endDate < formInfo.startDate) {
+        //     setError("End date cannot be before start date")
+        //     alert(error)
+        // }
 
-        if (!formInfo.fromCity || formInfo.fromCity.length <3) {
-            setError("From city must be at least three characters long")
-            return
-        }
+        // if (!formInfo.fromCity || formInfo.fromCity.length <3) {
+        //     setError("From city must be at least three characters long")
+        //     console.log(error)
+        //     return alert(error)
+        // }
 
-        if (!formInfo.toCity || formInfo.toCity.length <3) {
-            setError("To city must be at least three character long")
-            return
-        }
+        // if (!formInfo.toCity || formInfo.toCity.length <3) {
+        //     setError("To city must be at least three character long")
+        //     return
+        // }
 
-        if (formInfo.fromCity === formInfo.toCity && formInfo.fromCountry === formInfo.toCountry) {
-            setError("Trip destination cannot be the same as the starting point")
-            return
-        }
+        // if (formInfo.fromCity === formInfo.toCity && formInfo.fromCountry === formInfo.toCountry) {
+        //     setError("Trip destination cannot be the same as the starting point")
+        //     return
+        // }
 
         // If all vaildation check pass, proceed with form submission
 
-        setError("")
-        setFormInfo({ ...formInfo, startDate, endDate})
+        // setError("")
 
         try {
-
             await axios.post(`${BASE_URL}/trip`, formInfo)
-            setFormInfo(initialForm)
-            setIsCreatingTrip(false)
             getTrips(tripListId)
+            // setFormInfo(initialForm)
+            setIsCreatingTrip(false)
     } catch (error) {
         console.error("Error creating trip:", error)
     }
@@ -122,15 +122,16 @@ const {tripListId} = useParams()
 
                 <label htmlFor="startDate">Start Date</label>
                 <DatePicker 
-                    selected={startDate} 
-                    onChange={(date) => {setStartDate(date)}}/>
+                    id="startDate"
+                    selected={formInfo.startDate} 
+                    onSelect={(date) => { setFormInfo({ ...formInfo, startDate: date })}}/>
 
                 <label htmlFor="endDate">End Date</label>
                 <DatePicker 
-                    selected={endDate} 
-                    onChange={(date) => {setEndDate(date)}}/>
-
-                <button type="submit">Create Trip</button>
+                    id="endDate"
+                    selected={formInfo.endDate} 
+                    onSelect={(date) => { setFormInfo({ ...formInfo, endDate: date })}}/>
+                <button type="submit">Add Trip</button>
             </form>
         </div>
     )
