@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import axios from "axios";
+import UserContext from '../Context'
+import {useNavigate} from 'react-router-dom'
 
 export default function CreateAccountScreen() {
     
@@ -6,10 +9,14 @@ export default function CreateAccountScreen() {
         name: '',
         username: '',
         email: '',
-        password: ''
+        password: '',
+        profilePicture: ''
     }
 
+    const {setUser} = useContext(UserContext)
+
     const [formInfo, setFormInfo] = useState(initialForm)
+    let navigate = useNavigate()
 
     const formOnChange = (event) => {
         setFormInfo({ ...formInfo, [event.target.id]: event.target.value })
@@ -22,27 +29,24 @@ export default function CreateAccountScreen() {
             alert("Username must be at least 3 characters long.")
             return
         }
-
+        console.log(formInfo)
         try {
-            const response = await fetch('http://localhost:3001/user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formInfo)
-            });
+            const response = await axios.post('http://localhost:3001/user', formInfo);
+            console.log(response)
 
-            const data = await response.json();
-
-            if (response.ok) {
+            if (response.status === 201) {
                 // Account creation successful
                 // Change context for UserContext to update Main and redirect to home screen
                 setFormInfo(initialForm);
             } else {
                 // Account creation failed
-                alert(data.error);
-                console.error(data.error)
+                alert(response.data.error);
+                console.error(response.data.error)
             }
+
+            setUser(initialForm) 
+            navigate('/')
+
         } catch (error) {
             console.error('Error creating account:', error);
             alert('An error occurred while creating your account. Please try again.');

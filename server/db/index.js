@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/travelBugDatabase')
+    .connect(process.env.MONGODB_CONNECTION_STRING)
     .then(() => {
         console.log('Successfully connected to MongoDB.')
     })

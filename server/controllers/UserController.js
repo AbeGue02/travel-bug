@@ -2,10 +2,10 @@ const { User } = require('../models')
 
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { emailorUsername, password } = req.body;
 
   try {
-    const user = await User.findOne({ email: email, password: password });
+    const user = await User.findOne({ $or: [{ email: emailOrUsername }, { username: emailOrUsername }], password: password });
 
     if (user) {
       return res.status(200).json(user);
@@ -53,12 +53,12 @@ const getUserByName = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, username } = req.body;
     
-    const existingUser = await User.findOne({ $or: [{ email }, { password }] });
+    const existingUser = await User.findOne({ $or: [{ email: email }, { username: username }] });
 
     if (existingUser) {
-      return res.status(400).json({ error: 'Email or password already exists' });
+      return res.status(400).json({ error: 'Email or username already exists' });
     }
 
     const newUser = new User(req.body);
@@ -68,7 +68,7 @@ const createUser = async (req, res) => {
       return res.status(500).json({ error: 'Failed to save user' });
     }
 
-    return res.status(201).json({ user: savedUser });
+    return res.status(201).json( newUser );
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ error: 'Failed to create user', message: error.message });
