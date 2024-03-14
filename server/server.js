@@ -55,13 +55,14 @@ app.put('/triplist', TripListController.updateTripList)
 app.delete('/triplist', TripListController.deleteTripList)
 
 // Activity
-app.get('/actvity', ActivityController.getAllActivities)
-app.get('/actvity/:id', ActivityController.getActivityById)
+app.get('/activity', ActivityController.getAllActivities)
+app.get('/activity/:id', ActivityController.getActivityById)
+app.get('/trip/:id/activities', ActivityController.getActivitiesByTrip)
 // Get TripList by name
 // app.get('/actvity/', ActivityController.getActivityByName)
-app.post('/actvity', ActivityController.createActivity)
-app.put('/actvity', ActivityController.updateActivity)
-app.delete('/actvity', ActivityController.deleteActivity)
+app.post('/activity', ActivityController.createActivity)
+app.put('/activity', ActivityController.updateActivity)
+app.delete('/activity', ActivityController.deleteActivity)
 
 // Category
 app.get('/category', CategoryController.getAllCategories)
