@@ -39,8 +39,13 @@ const main = async () => {
       
     ];
 
-    await User.insertMany(users);
-    console.log('Created users!');
+    try {
+        await User.deleteMany();
+        await User.insertMany(users);
+        console.log('Created users!');
+    } catch (error) {
+        console.error('Error creating users:', error);
+    }
 };
 
 const run = async () => {
@@ -54,4 +59,3 @@ const run = async () => {
 };
 
 run();
-
