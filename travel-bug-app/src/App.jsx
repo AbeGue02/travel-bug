@@ -1,12 +1,21 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './App.css'
 import UserContext from './Context'
 import Header from './components/Header'
 import Main from './components/Main'
+import { useCookies } from 'react-cookie'
 
 function App() {
 
-  const [user, setUser] = useState({})
+  const [cookies, setCookies, removeCookie] = useCookies(['user'])
+  const [user, setUser] = useState(cookies.user ? cookies.user : {})
+
+  useEffect(() => {
+    user != cookies.user && setCookies('user', user)
+    console.log('cookies updated to: ', cookies.user)
+  }, [user])
+
+  console.log(user)
 
   return (
     <>
