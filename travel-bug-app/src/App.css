@@ -110,6 +110,11 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 color: white;
+font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 div.logo {
   cursor: pointer;
@@ -226,6 +231,12 @@ div.tripListing{
   color: white;
   display: flex;
   flex-direction: column;
+  font-family: 'Notable';
+  font-style: normal;
+  font-weight:400;
+  letter-spacing: 0.05em;
+  text-align: center;
+
  
 }
 div.createTripBtn{
@@ -233,8 +244,8 @@ div.createTripBtn{
   margin: auto;
   background-color :rgba(98, 98, 98, 0.91) ;
   border: none; 
-  
-  
+  border-radius: 22px;
+  transition: 2s;
 }
 div.tripListing h2{
   max-height: fit-content;
@@ -243,14 +254,19 @@ div.tripListing h2{
 div.createTripContainer form{
   margin: auto;
 }
+@keyframes fade-inTripText{
+  0%{ opacity:1;}
+  100%{ opacity:50%;}
+}
 div.trip{
+  animation: fade-inTripText 3s infinite alternate;
   color: white;
   font-size: 30px;
-  font-family: 'Notable';
-  font-style: normal;
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 31px;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
   text-align: center;
 
 color: #FFFFFF; 
@@ -389,4 +405,35 @@ div.profile{
   font-variation-settings: "wdth" 100;
   font-size: 28px;
   border-radius: 22px;
+}
+div.createTripBtn button {
+  background-color:rgba(98, 98, 98, 0.91) ;
+  border: none;
+  border-radius: 22px;
+  color: #FFFFFF;
+  font-size: 20px;
+  background: var(--clr);
+}
+div.createTripBtn button :hover{
+  letter-spacing:0.50em ;
+}
+div.profile button{
+  position: relative;
+  background:rgb(120, 126, 163);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 22px;
+  text-decoration: none;
+  padding:10px 20px;
+  margin-top: 2vh;
+  transition: 0.5;
+}
+img#profile-pic{
+  width: 50px;
+  border-radius: 50%;
+}
+ul.profileDetails img{
+  width: 200px;
+  border-radius: 50%;
+  padding: 50px;
 }

@@ -20,7 +20,7 @@ export default function UserProfile() {
   return (
     <div className="profile">
       <h3>Profile</h3>
-      <ul>
+      <ul className="profileDetails">
         <li>Profile Picture: <img src={user.profilePicture } /></li>
         <li>Username {user.username}</li>
         <li>Name {user.name}</li>
