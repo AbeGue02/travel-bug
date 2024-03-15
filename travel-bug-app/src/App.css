@@ -339,3 +339,53 @@ div.PITABtn button:hover{
   background: var(--clr);
   letter-spacing: 0.35em;
 }
+div.profileUser{
+  color: #FFFFFF;
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 24px;
+  display: flex;
+}
+div.profileSettings{
+  display: flex;
+  flex-direction: column;
+  color: #ffffff; 
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  background-color: rgba(98, 98, 98, 0.91);
+  border-radius: 22px;
+  opacity: 90%;
+}
+div.profileSettings button{
+  color: #FFFFFF;
+  background-color: rgb(120, 126, 163);
+  margin-top: 30px;
+  border-radius: 22px;
+  border: none;
+  margin-bottom: 10px;
+}
+div.profile{
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2vh;
+  font-family: "Georama", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 28px;
+  border-radius: 22px;
+}
