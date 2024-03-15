@@ -64,6 +64,7 @@ export default function TripDetails() {
                                             activities.map((activity) => (
                                                 <div key={activity._id}>
                                                     <h4>{activity.name}</h4>
+                                                    <h5>{activity.date}</h5>
                                                 </div>
                                             ))
                                         }
